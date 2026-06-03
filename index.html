@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ru Amsefeh l'ensemble de l'artisanat Medina</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Tajawal:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --gold:#C9943A;--gold-l:#E8B86D;--gold-d:#8B6420;
+  --black:#080808;--dark:#111;--dark2:#181818;--dark3:#202020;--dark4:#2A2A2A;
+  --white:#F7F4EE;--grey:#888;--grey2:#555;
+  --green:#25D366;
+  --ff-display:'Playfair Display',serif;
+  --ff-ar:'Tajawal',sans-serif;
+  --ff-body:'DM Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--ff-body);overflow-x:hidden;}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--dark);}
+::-webkit-scrollbar-thumb{background:var(--gold-d);}
+
+[dir="rtl"]{font-family:var(--ff-ar);}
+[dir="rtl"] .nav-links{flex-direction:row-reverse;}
+[dir="rtl"] .hero-left{text-align:right;}
+[dir="rtl"] .hero-btns{flex-direction:row-reverse;}
+[dir="rtl"] .footer-contact a{flex-direction:row-reverse;}
+[dir="rtl"] .car-spec{flex-direction:row-reverse;}
+[dir="rtl"] .step-content{text-align:right;}
+[dir="rtl"] .testi-card{text-align:right;}
+[dir="rtl"] .testi-stars{justify-content:flex-end;}
+[dir="rtl"] .star-rating{justify-content:flex-end;}
+
+/* ── PROGRESS BAR ── */
+.progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--gold);z-index:10000;width:0%;transition:width .1s ease;border-radius:0 2px 2px 0;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:rgba(8,8,8,.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,148,58,.12);transition:all .4s cubic-bezier(.16,1,.3,1);}
+nav.scrolled{height:58px;background:rgba(8,8,8,.98);box-shadow:0 4px 30px rgba(0,0,0,.5);}
+.nav-logo{display:flex;align-items:center;gap:0;text-decoration:none;cursor:pointer;}
+/* ⚠️  اللوجو مستطيل - الاسم تحيد */
+.logo-emblem{width:80px;height:40px;overflow:hidden;border:1.5px solid var(--gold);flex-shrink:0;transition:all .4s cubic-bezier(.16,1,.3,1);border-radius:4px;}
+nav.scrolled .logo-emblem{width:65px;height:32px;}
+.logo-emblem img{width:100%;height:100%;object-fit:cover;}
+/* ⚠️  تم حذف logo-text-wrap */
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
+.nav-links a{text-decoration:none;color:rgba(247,244,238,.65);font-size:12px;letter-spacing:1.8px;text-transform:uppercase;font-weight:500;transition:color .3s;position:relative;padding-bottom:2px;}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width .3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.btn-nav-cta{background:var(--gold);color:var(--black);padding:9px 20px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:all .4s cubic-bezier(.16,1,.3,1);clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,7px 100%,0 calc(100% - 7px));white-space:nowrap;position:relative;overflow:hidden;}
+.btn-nav-cta::before,.btn-primary::before,.btn-book-car::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;background:rgba(255,255,255,.2);transform:translate(-50%,-50%);transition:width .6s,height .6s;}
+.btn-nav-cta:hover::before,.btn-primary:hover::before,.btn-book-car:hover::before{width:300px;height:300px;}
+.btn-nav-cta:hover,.btn-primary:hover,.btn-book-car:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(201,148,58,.3);}
+.btn-nav-cta:hover{background:var(--gold-l);}
+.nav-wa{width:36px;height:36px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;transition:transform .3s;flex-shrink:0;}
+.nav-wa:hover{transform:scale(1.1);}
+.nav-wa svg{width:18px;height:18px;fill:#fff;}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;background:transparent;border:none;}
+.burger span{width:22px;height:1.5px;background:var(--white);transition:all .3s;display:block;}
+.mob-menu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(8,8,8,.99);z-index:998;padding:24px 5%;flex-direction:column;gap:4px;border-bottom:1px solid rgba(201,148,58,.15);}
+.mob-menu.open{display:flex;}
+.mob-menu a{color:rgba(247,244,238,.7);text-decoration:none;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.mob-menu a:hover{color:var(--gold);}
+
+/* ── HERO ── */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:68px;}
+.hero-bg{position:absolute;inset:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:1;filter:brightness(0.7);}
+.hero-bg::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.25);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,148,58,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,148,58,.03) 1px,transparent 1px);background-size:70px 70px;z-index:1;}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;padding:80px 5%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(201,148,58,.5);padding:6px 18px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:22px;background:rgba(0,0,0,.5);}
+.hero-pill::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+h1.hero-title{font-family:var(--ff-display);font-size:clamp(38px,5vw,72px);line-height:1.0;font-weight:700;margin-bottom:10px;text-shadow:0 2px 10px rgba(0,0,0,.5);}
+h1.hero-title em{font-style:italic;color:var(--gold);display:block;animation:glow 2s ease-in-out infinite alternate;}
+@keyframes glow{0%{text-shadow:0 0 10px rgba(201,148,58,.3),0 0 20px rgba(201,148,58,.1);}100%{text-shadow:0 0 20px rgba(201,148,58,.6),0 0 40px rgba(201,148,58,.3),0 0 60px rgba(201,148,58,.1);}}
+.hero-sub{color:rgba(247,244,238,.9);font-size:15px;line-height:1.85;margin-bottom:34px;max-width:500px;text-shadow:0 1px 4px rgba(0,0,0,.6);}
+.hero-feats{display:flex;gap:20px;margin-bottom:38px;flex-wrap:wrap;}
+.h-feat{display:flex;align-items:center;gap:7px;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--white);text-shadow:0 1px 3px rgba(0,0,0,.7);}
+.h-feat svg{width:14px;height:14px;fill:var(--gold);flex-shrink:0;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{background:var(--gold);color:var(--black);padding:14px 28px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;clip-path:polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));transition:all .4s cubic-bezier(.16,1,.3,1);display:inline-flex;align-items:center;gap:9px;white-space:nowrap;position:relative;overflow:hidden;}
+.btn-primary svg{width:16px;height:16px;fill:var(--black);flex-shrink:0;}
+.btn-outline{background:rgba(0,0,0,.4);color:var(--white);padding:14px 28px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(247,244,238,.3);cursor:pointer;transition:all .3s;backdrop-filter:blur(4px);white-space:nowrap;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);background:rgba(0,0,0,.6);}
+.hero-car-wrap{position:relative;display:flex;align-items:center;justify-content:center;}
+.hero-car-wrap img{width:100%;max-width:580px;filter:drop-shadow(0 20px 50px rgba(201,148,58,.35));animation:carfloat 5s ease-in-out infinite;}
+@keyframes carfloat{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-10px) rotate(.3deg);}}
+.hero-bottom-note{position:absolute;bottom:28px;left:5%;z-index:2;display:flex;align-items:center;gap:10px;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.8);}
+.hero-bottom-note::before{content:'';width:28px;height:1px;background:var(--gold);}
+
+/* ── LANG FLOAT ── */
+.lang-float{position:fixed;bottom:26px;left:26px;z-index:997;display:flex;flex-direction:column;gap:8px;}
+[dir="rtl"] .lang-float{left:auto;right:26px;}
+.lang-flag-btn{width:44px;height:44px;border-radius:50%;border:2px solid rgba(201,148,58,.35);background:var(--dark3);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;transition:all .3s;line-height:1;padding:0;overflow:hidden;}
+.lang-flag-btn:hover{border-color:var(--gold);transform:scale(1.1);box-shadow:0 0 15px rgba(201,148,58,.3);}
+.lang-flag-btn.active{border-color:var(--gold);background:var(--dark);box-shadow:0 0 20px rgba(201,148,58,.4);}
+
+/* ── STAR RATING ── */
+.star-rating{display:flex;gap:6px;flex-direction:row;}
+.star-rating .star{cursor:pointer;transition:all .2s;fill:var(--grey);width:28px;height:28px;}
+.star-rating .star.active,.star-rating .star:hover{fill:var(--gold);transform:scale(1.2);}
+
+/* ── SECTION HEADER ── */
+.sec-head{text-align:center;margin-bottom:56px;}
+.sec-label{display:inline-flex;align-items:center;gap:12px;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.sec-label::before,.sec-label::after{content:'';width:24px;height:1px;background:var(--gold-d);transition:width .6s cubic-bezier(.16,1,.3,1);}
+.sec-head:hover .sec-label::before,.sec-head:hover .sec-label::after{width:48px;}
+.sec-title{font-family:var(--ff-display);font-size:clamp(28px,3.8vw,52px);font-weight:700;line-height:1.1;}
+.sec-title em{font-style:italic;color:var(--gold);}
+.sec-sub{color:var(--grey);font-size:14px;margin-top:10px;}
+
+/* ── CARS ── */
+#cars{padding:96px 5%;background:var(--dark);}
+.season-toggle{display:flex;justify-content:center;gap:0;margin-bottom:40px;border:1px solid rgba(201,148,58,.2);max-width:280px;margin-left:auto;margin-right:auto;}
+.s-btn{flex:1;padding:10px 20px;background:transparent;border:none;color:var(--grey);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .3s;font-family:var(--ff-body);white-space:nowrap;}
+.s-btn.active{background:var(--gold);color:var(--black);}
+.cars-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px;}
+.car-card{background:var(--dark3);padding:26px 22px;position:relative;overflow:hidden;cursor:pointer;transition:transform .35s;opacity:0;transform:translateY(60px);}
+.car-card.vis{opacity:1;transform:translateY(0);transition:all .6s cubic-bezier(.16,1,.3,1);}
+.car-card:nth-child(1).vis{transition-delay:.05s;}
+.car-card:nth-child(2).vis{transition-delay:.1s;}
+.car-card:nth-child(3).vis{transition-delay:.15s;}
+.car-card:nth-child(4).vis{transition-delay:.2s;}
+.car-card:nth-child(5).vis{transition-delay:.25s;}
+.car-card:nth-child(6).vis{transition-delay:.3s;}
+.car-card:nth-child(7).vis{transition-delay:.35s;}
+.car-card:nth-child(8).vis{transition-delay:.4s;}
+.car-card:nth-child(9).vis{transition-delay:.45s;}
+.car-card:nth-child(10).vis{transition-delay:.5s;}
+.car-card:nth-child(11).vis{transition-delay:.55s;}
+.car-card:nth-child(12).vis{transition-delay:.6s;}
+.car-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:translateX(-100%);transition:transform .6s;}
+.car-card:hover{transform:translateY(-5px);}
+.car-card:hover::before{transform:translateX(0);}
+.car-badge{position:absolute;top:14px;right:14px;background:var(--gold);color:var(--black);font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;z-index:2;}
+[dir="rtl"] .car-badge{right:auto;left:14px;}
+.car-img-wrap{width:100%;height:140px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:18px;background:rgba(0,0,0,.2);border-radius:4px;}
+.car-img-wrap img{max-width:100%;max-height:100%;object-fit:contain;transition:transform .4s;}
+.car-card:hover .car-img-wrap img{transform:scale(1.06);}
+.car-name{font-family:var(--ff-display);font-size:20px;font-weight:700;margin-bottom:10px;}
+.car-specs-row{display:flex;gap:12px;margin-bottom:14px;flex-wrap:wrap;}
+.car-spec{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--grey);letter-spacing:.5px;}
+.car-spec svg{width:12px;height:12px;fill:var(--gold);flex-shrink:0;}
+.car-price-wrap{display:flex;align-items:baseline;gap:8px;}
+.car-price{font-size:26px;font-weight:700;color:var(--gold);font-family:var(--ff-display);}
+.car-price-unit{font-size:12px;color:var(--grey);}
+.car-price-summer{font-size:11px;color:var(--grey2);margin-top:2px;}
+.btn-book-car{width:100%;margin-top:16px;background:transparent;border:1px solid rgba(201,148,58,.35);color:var(--gold);padding:10px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .4s cubic-bezier(.16,1,.3,1);font-family:var(--ff-body);white-space:nowrap;position:relative;overflow:hidden;}
+.btn-book-car:hover{background:var(--gold);color:var(--black);}
+
+/* ── CONDITIONS ── */
+#conditions{padding:96px 5%;background:var(--black);position:relative;overflow:hidden;}
+#conditions::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(201,148,58,.04),transparent 70%);pointer-events:none;}
+.cond-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.cond-card{background:var(--dark3);padding:40px 30px;position:relative;overflow:hidden;transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s ease;}
+.cond-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(201,148,58,.1);}
+.cond-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform .4s;}
+.cond-card:hover::after{transform:scaleX(1);}
+.cond-icon{width:50px;height:50px;border:1px solid rgba(201,148,58,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:22px;transition:transform .4s cubic-bezier(.16,1,.3,1);}
+.cond-card:hover .cond-icon{transform:rotate(360deg) scale(1.1);}
+.cond-icon svg{width:24px;height:24px;fill:var(--gold);}
+.cond-title{font-family:var(--ff-display);font-size:18px;font-weight:700;color:var(--gold);margin-bottom:14px;}
+.cond-list{list-style:none;}
+.cond-list li{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:rgba(247,244,238,.65);line-height:1.7;margin-bottom:8px;}
+.cond-list li::before{content:'▸';color:var(--gold);font-size:10px;margin-top:4px;flex-shrink:0;}
+[dir="rtl"] .cond-list li{flex-direction:row-reverse;}
+[dir="rtl"] .cond-icon{margin-left:auto;margin-right:0;}
+[dir="rtl"] .cond-card{text-align:right;}
+
+/* ── HOW ── */
+#how{padding:96px 5%;background:var(--dark2);}
+.how-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+.how-grid::before{content:'';position:absolute;top:35px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,var(--gold-d),var(--gold),var(--gold-d));z-index:0;}
+.step{text-align:center;padding:0 18px;position:relative;z-index:1;}
+.step-num{width:70px;height:70px;border:1px solid var(--gold);background:var(--dark2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;position:relative;}
+.step-num svg{width:28px;height:28px;fill:var(--gold);}
+.step-num::before{content:'';position:absolute;inset:-5px;border-radius:50%;border:1px solid rgba(201,148,58,.2);}
+.step-title{font-size:14px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.step-text{font-size:12px;color:var(--grey);line-height:1.7;}
+
+/* ── TESTIMONIALS ── */
+#testi{padding:96px 5%;background:var(--black);}
+.testi-wrap{max-width:1100px;margin:0 auto;}
+.testi-slides-outer{overflow:visible;width:100%;}
+.testi-slides{display:flex;gap:20px;transition:transform .5s cubic-bezier(.4,0,.2,1);width:100%;}
+.testi-card{flex:0 0 auto;background:var(--dark3);padding:32px;border:1px solid rgba(201,148,58,.07);position:relative;transition:transform .3s,box-shadow .3s;}
+.testi-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(201,148,58,.08);}
+.testi-card::before{content:'\201C';position:absolute;top:18px;right:22px;font-family:var(--ff-display);font-size:72px;color:rgba(201,148,58,.12);line-height:1;}
+[dir="rtl"] .testi-card::before{right:auto;left:22px;content:'\201D';}
+.testi-stars{display:flex;gap:3px;margin-bottom:16px;}
+.testi-stars svg{width:16px;height:16px;fill:var(--gold);flex-shrink:0;}
+.testi-text{font-size:13px;color:rgba(247,244,238,.65);line-height:1.85;margin-bottom:20px;font-style:italic;}
+.testi-name{font-size:13px;font-weight:600;color:var(--white);}
+.testi-loc{font-size:10px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-top:3px;}
+.testi-nav{display:flex;justify-content:center;gap:10px;margin-top:36px;}
+.t-btn{width:42px;height:42px;border:1px solid rgba(201,148,58,.3);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;}
+.t-btn:hover{background:var(--gold);border-color:var(--gold);}
+.t-btn:hover svg{fill:var(--black);}
+.t-btn svg{width:16px;height:16px;fill:var(--white);}
+
+/* ── ADD REVIEW ── */
+#add-review{padding:60px 5%;background:var(--dark2);border-top:1px solid rgba(201,148,58,.1);}
+.review-form-wrap{max-width:600px;margin:0 auto;}
+.review-form-wrap h3{font-family:var(--ff-display);font-size:24px;text-align:center;margin-bottom:8px;}
+.review-form-wrap h3 em{color:var(--gold);font-style:italic;}
+.review-form-wrap .rev-sub{text-align:center;color:var(--grey);font-size:13px;margin-bottom:28px;}
+.rev-ff{margin-bottom:16px;}
+.rev-ff label{display:block;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:7px;}
+.rev-ff input,.rev-ff textarea{width:100%;background:var(--dark3);border:1px solid rgba(201,148,58,.18);color:var(--white);padding:12px 15px;font-family:var(--ff-body);font-size:13px;outline:none;transition:border-color .3s;}
+.rev-ff input:focus,.rev-ff textarea:focus{border-color:var(--gold);}
+.rev-ff textarea{resize:vertical;min-height:80px;}
+.rev-rating-wrap{display:flex;align-items:center;gap:14px;margin-bottom:20px;justify-content:center;flex-wrap:wrap;}
+.rev-rating-wrap span{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--grey);}
+.btn-submit-review{width:100%;background:var(--gold);color:var(--black);padding:14px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:all .4s cubic-bezier(.16,1,.3,1);font-family:var(--ff-body);position:relative;overflow:hidden;}
+.btn-submit-review:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 10px 30px rgba(201,148,58,.3);}
+.btn-submit-review::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;background:rgba(255,255,255,.2);transform:translate(-50%,-50%);transition:width .6s,height .6s;}
+.btn-submit-review:hover::before{width:300px;height:300px;}
+.rev-error{color:#e74c3c;font-size:10px;text-align:center;margin-top:8px;display:none;}
+.rev-error.show{display:block;}
+
+/* ── CITIES ── */
+#cities{padding:96px 5%;background:var(--dark);}
+.cities-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:3px;}
+.city-card{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:.7;}
+.city-card img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1);filter:brightness(.5) saturate(.7);}
+.city-card:hover img{transform:scale(1.15);filter:brightness(.6) saturate(1);}
+.city-over{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent 55%);transition:background .5s ease;}
+.city-card:hover .city-over{background:linear-gradient(to top,rgba(201,148,58,.3),transparent 60%);}
+.city-nm{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-family:var(--ff-display);font-size:16px;font-weight:700;letter-spacing:.5px;}
+
+/* ── STRIP ── */
+#strip{padding:44px 5%;background:var(--dark3);border-top:1px solid rgba(201,148,58,.1);border-bottom:1px solid rgba(201,148,58,.1);}
+.strip-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:36px;}
+.strip-item{display:flex;align-items:center;gap:14px;}
+.strip-icon{width:44px;height:44px;flex-shrink:0;border:1px solid rgba(201,148,58,.28);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.strip-icon svg{width:20px;height:20px;fill:var(--gold);}
+.strip-t{font-size:13px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.strip-s{font-size:11px;color:var(--grey);}
+[dir="rtl"] .strip-item{flex-direction:row-reverse;text-align:right;}
+
+/* ── FOOTER ── */
+footer{background:var(--black);padding:60px 5% 28px;border-top:1px solid rgba(201,148,58,.08);}
+.footer-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:50px;}
+.f-brand{font-family:var(--ff-display);font-size:24px;font-weight:700;color:var(--gold);letter-spacing:3px;display:block;margin-bottom:3px;}
+.f-brand small{color:var(--grey);font-size:9px;letter-spacing:4px;text-transform:uppercase;font-family:var(--ff-body);}
+.f-desc{color:var(--grey);font-size:13px;line-height:1.8;margin-top:14px;max-width:280px;}
+.f-contact{margin-top:22px;}
+.f-contact a{display:flex;align-items:center;gap:9px;color:var(--grey);font-size:13px;text-decoration:none;margin-bottom:9px;transition:color .3s;}
+.f-contact a:hover{color:var(--gold);}
+.f-contact svg{width:14px;height:14px;fill:var(--gold);flex-shrink:0;}
+[dir="rtl"] .f-contact a{flex-direction:row-reverse;}
+.f-col h4{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:22px;}
+.f-col ul{list-style:none;}
+.f-col li{margin-bottom:9px;}
+.f-col a{color:var(--grey);text-decoration:none;font-size:13px;transition:color .3s;}
+.f-col a:hover{color:var(--gold);}
+.socials{display:flex;gap:10px;margin-top:18px;}
+.soc-btn{width:36px;height:36px;border:1px solid rgba(201,148,58,.28);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;text-decoration:none;}
+.soc-btn:hover{background:var(--gold);border-color:var(--gold);}
+.soc-btn:hover svg{fill:var(--black);}
+.soc-btn svg{width:14px;height:14px;fill:var(--white);}
+.f-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.f-bottom p{font-size:11px;color:rgba(136,136,136,.5);letter-spacing:.5px;}
+
+/* ── WA FLOAT ── */
+.wa-float{position:fixed;bottom:26px;right:26px;width:54px;height:54px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:998;transition:transform .3s;border:none;animation:waPulse 2.5s infinite;}
+@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6);}70%{box-shadow:0 0 0 20px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
+.wa-float:hover{transform:scale(1.1);animation:none;box-shadow:0 4px 18px rgba(37,211,102,.4);}
+.wa-float svg{width:26px;height:26px;fill:#fff;}
+[dir="rtl"] .wa-float{right:auto;left:26px;}
+
+/* ── MODAL ── */
+.modal{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;}
+.modal.open{display:flex;}
+.modal-ov{position:absolute;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(8px);}
+.modal-box{position:relative;z-index:1;background:var(--dark3);border:1px solid rgba(201,148,58,.18);padding:44px;max-width:520px;width:92%;max-height:90vh;overflow-y:auto;animation:modalIn .4s cubic-bezier(.16,1,.3,1);}
+@keyframes modalIn{from{opacity:0;transform:translateY(30px) scale(.95);}to{opacity:1;transform:translateY(0) scale(1);}}
+.modal-close{position:absolute;top:14px;right:14px;background:transparent;border:none;color:var(--grey);font-size:22px;cursor:pointer;line-height:1;transition:color .3s;}
+[dir="rtl"] .modal-close{right:auto;left:14px;}
+.modal-close:hover{color:var(--white);}
+.modal-title{font-family:var(--ff-display);font-size:28px;font-weight:700;margin-bottom:6px;}
+.modal-car{font-family:var(--ff-display);font-size:18px;color:var(--gold);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(201,148,58,.14);}
+.modal-sub{font-size:13px;color:var(--grey);margin-bottom:26px;}
+.ff{margin-bottom:16px;}
+.ff label{display:block;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:7px;}
+.ff input,.ff select,.ff textarea{width:100%;background:var(--dark2);border:1px solid rgba(201,148,58,.18);color:var(--white);padding:12px 15px;font-family:var(--ff-body);font-size:13px;outline:none;transition:border-color .3s;}
+.ff input:focus,.ff select:focus,.ff textarea:focus{border-color:var(--gold);}
+.ff select option{background:var(--dark3);}
+.ff textarea{resize:vertical;min-height:80px;}
+.ff input.error,.ff select.error{border-color:#e74c3c !important;box-shadow:0 0 0 1px rgba(231,76,60,.3);}
+.error-msg{color:#e74c3c;font-size:10px;margin-top:4px;display:none;letter-spacing:.5px;}
+.error-msg.show{display:block;}
+.btn-wa-submit{width:100%;background:var(--green);color:#fff;border:none;padding:14px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;margin-top:16px;display:flex;align-items:center;justify-content:center;gap:10px;font-family:var(--ff-body);transition:opacity .3s;white-space:nowrap;}
+.btn-wa-submit:hover{opacity:.9;}
+.btn-wa-submit svg{width:18px;height:18px;fill:#fff;flex-shrink:0;}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:86px;right:26px;background:var(--dark3);border:1px solid var(--gold);padding:14px 22px;font-size:12px;color:var(--white);z-index:9999;transform:translateY(16px);opacity:0;transition:all .4s;pointer-events:none;max-width:260px;}
+[dir="rtl"] .toast{right:auto;left:26px;}
+.toast.show{transform:translateY(0);opacity:1;}
+
+/* ── FADE UP ── */
+.fu{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s;}
+.fu.vis{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .cond-grid{grid-template-columns:repeat(2,1fr);}
+  .cities-grid{grid-template-columns:repeat(3,1fr);}
+  .how-grid::before{display:none;}
+  .how-grid{grid-template-columns:repeat(2,1fr);gap:30px;}
+  .footer-inner{grid-template-columns:1fr 1fr;}
+  .strip-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:900px){
+  .nav-links,.nav-right .btn-nav-cta{display:none;}
+  .burger{display:flex;}
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-car-wrap{display:none;}
+  .cars-grid{grid-template-columns:repeat(2,1fr);}
+  .cond-grid{grid-template-columns:1fr;}
+  .how-grid{grid-template-columns:1fr 1fr;}
+  .cities-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-inner{grid-template-columns:1fr;}
+  .strip-grid{grid-template-columns:1fr 1fr;}
+  .testi-slides-outer{overflow:hidden;}
+}
+@media(max-width:600px){
+  .cars-grid{grid-template-columns:1fr;}
+  .how-grid{grid-template-columns:1fr;}
+  .strip-grid{grid-template-columns:1fr;}
+  .cities-grid{grid-template-columns:repeat(2,1fr);}
+  .lang-float{bottom:10px;left:10px;}
+  [dir="rtl"] .lang-float{left:auto;right:10px;}
+  .lang-flag-btn{width:38px;height:38px;font-size:18px;}
+  .modal-box{padding:28px 20px;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="toast" id="toast"></div>
+
+<div class="lang-float">
+  <button class="lang-flag-btn active" onclick="setLang('fr')" id="lang-fr" title="Français">🇫🇷</button>
+  <button class="lang-flag-btn" onclick="setLang('en')" id="lang-en" title="English">🇬🇧</button>
+  <button class="lang-flag-btn" onclick="setLang('ar')" id="lang-ar" title="العربية">🇸🇦</button>
+</div>
+
+<!-- ⚠️  مودال بلا تقييم -->
+<div class="modal" id="modal">
+  <div class="modal-ov" onclick="closeModal()"></div>
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-title" id="m-title"></div>
+    <div class="modal-car" id="m-car"></div>
+    <div class="modal-sub" id="m-sub"></div>
+    <div class="ff"><label id="l-car"></label><select id="f-car"><option value="" data-i18n="car_choose"></option></select></div>
+    <div class="ff"><label id="l-name"></label><input type="text" id="f-name"/><div class="error-msg" id="err-name"></div></div>
+    <div class="ff"><label id="l-phone"></label><input type="tel" id="f-phone" placeholder="+212 6XX XXX XXX"/><div class="error-msg" id="err-phone"></div></div>
+    <div class="ff"><label id="l-from"></label>
+      <select id="f-from">
+        <option value="Marrakech">Marrakech</option>
+        <option value="Aéroport Marrakech">Aéroport Marrakech</option>
+        <option value="Casablanca">Casablanca</option><option value="Agadir">Agadir</option>
+        <option value="Rabat">Rabat</option><option value="Tanger">Tanger</option>
+        <option value="Fès">Fès</option><option value="Autre">Autre</option>
+      </select>
+    </div>
+    <div class="ff"><label id="l-start"></label><input type="date" id="f-start"/><div class="error-msg" id="err-start"></div></div>
+    <div class="ff"><label id="l-end"></label><input type="date" id="f-end"/><div class="error-msg" id="err-end"></div></div>
+    <div class="ff"><label id="l-msg"></label><textarea id="f-msg" placeholder="..."></textarea></div>
+    <button class="btn-wa-submit" onclick="validateAndSend()">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.549 4.099 1.508 5.82L.057 23.5l5.81-1.525A11.939 11.939 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+      <span id="m-btn-txt"></span>
+    </button>
+  </div>
+</div>
+
+<button class="wa-float" onclick="openModal('')" title="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.549 4.099 1.508 5.82L.057 23.5l5.81-1.525A11.939 11.939 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+</button>
+
+<!-- ⚠️  NAV - غير اللوجو بلا اسم -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <div class="logo-emblem">
+      <img src="images/logo.png" alt="Ru Amsefeh" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=color:#C9943A;font-family:serif;font-size:11px;font-weight:700;>RA</span>'"/>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" class="active" data-i18n="nav_home"></a></li>
+    <li><a href="#cars" data-i18n="nav_cars"></a></li>
+    <li><a href="#conditions" data-i18n="nav_conditions"></a></li>
+    <li><a href="#how" data-i18n="nav_how"></a></li>
+    <li><a href="#testi" data-i18n="nav_reviews"></a></li>
+    <li><a href="#cities" data-i18n="nav_cities"></a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn-nav-cta" onclick="openModal('')" data-i18n="nav_cta"></button>
+    <button class="nav-wa" onclick="openWA()">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.549 4.099 1.508 5.82L.057 23.5l5.81-1.525A11.939 11.939 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+    </button>
+    <button class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="#" onclick="toggleMenu()" data-i18n="nav_home"></a>
+  <a href="#cars" onclick="toggleMenu()" data-i18n="nav_cars"></a>
+  <a href="#conditions" onclick="toggleMenu()" data-i18n="nav_conditions"></a>
+  <a href="#how" onclick="toggleMenu()" data-i18n="nav_how"></a>
+  <a href="#testi" onclick="toggleMenu()" data-i18n="nav_reviews"></a>
+  <a href="#cities" onclick="toggleMenu()" data-i18n="nav_cities"></a>
+</div>
+
+<section id="hero">
+  <div class="hero-bg">
+    <img src="images/hero-bg.jpg" alt="Marrakech" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80'"/>
+  </div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-pill"><span data-i18n="hero_badge"></span></div>
+      <h1 class="hero-title"><span data-i18n="hero_title1"></span><em data-i18n="hero_title2"></em></h1>
+      <p class="hero-sub" data-i18n="hero_sub"></p>
+      <div class="hero-feats">
+        <div class="h-feat"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg><span data-i18n="feat1"></span></div>
+        <div class="h-feat"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg><span data-i18n="feat2"></span></div>
+        <div class="h-feat"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg><span data-i18n="feat3"></span></div>
+      </div>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="openModal('')"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.549 4.099 1.508 5.82L.057 23.5l5.81-1.525A11.939 11.939 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg><span data-i18n="btn_wa_book"></span></button>
+        <button class="btn-outline" onclick="document.getElementById('cars').scrollIntoView({behavior:'smooth'})" data-i18n="btn_see_cars"></button>
+      </div>
+    </div>
+    <div class="hero-car-wrap">
+      <img src="images/hero-car.png" alt="Artisanat" onerror="this.style.display='none'"/>
+    </div>
+  </div>
+  <div class="hero-bottom-note" data-i18n="hero_note"></div>
+</section>
+
+<section id="cars">
+  <div class="sec-head fu">
+    <div class="sec-label"><span data-i18n="cars_label"></span></div>
+    <h2 class="sec-title"><span data-i18n="cars_title1"></span> <em data-i18n="cars_title2"></em></h2>
+    <p class="sec-sub" data-i18n="cars_sub"></p>
+  </div>
+  <div class="season-toggle">
+    <button class="s-btn active" onclick="setSeason('normal')" id="btn-normal" data-i18n="season_normal"></button>
+    <button class="s-btn" onclick="setSeason('summer')" id="btn-summer" data-i18n="season_summer"></button>
+  </div>
+  <div class="cars-grid" id="cars-grid"></div>
+</section>
+
+<section id="conditions">
+  <div class="sec-head fu">
+    <div class="sec-label"><span data-i18n="cond_label"></span></div>
+    <h2 class="sec-title"><span data-i18n="cond_title1"></span> <em data-i18n="cond_title2"></em></h2>
+  </div>
+  <div class="cond-grid">
+    <div class="cond-card fu"><div class="cond-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></div><div class="cond-title" data-i18n="cond1_title"></div><ul class="cond-list" id="cond1-list"></ul></div>
+    <div class="cond-card fu"><div class="cond-icon"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div><div class="cond-title" data-i18n="cond2_title"></div><ul class="cond-list" id="cond2-list"></ul></div>
+    <div class="cond-card fu"><div class="cond-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg></div><div class="cond-title" data-i18n="cond3_title"></div><ul class="cond-list" id="cond3-list"></ul></div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="sec-head fu">
+    <div class="sec-label"><span data-i18n="how_label"></span></div>
+    <h2 class="sec-title"><span data-i18n="how_title1"></span> <em data-i18n="how_title2"></em></h2>
+  </div>
+  <div class="how-grid">
+    <div class="step fu"><div class="step-num"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z"/></svg></div><div class="step-content"><div class="step-title" data-i18n="step1_t"></div><p class="step-text" data-i18n="step1_s"></p></div></div>
+    <div class="step fu"><div class="step-num"><svg viewBox="0 0 24 24"><path d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg></div><div class="step-content"><div class="step-title" data-i18n="step2_t"></div><p class="step-text" data-i18n="step2_s"></p></div></div>
+    <div class="step fu"><div class="step-num"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.549 4.099 1.508 5.82L.057 23.5l5.81-1.525A11.939 11.939 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></div><div class="step-content"><div class="step-title" data-i18n="step3_t"></div><p class="step-text" data-i18n="step3_s"></p></div></div>
+    <div class="step fu"><div class="step-num"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><div class="step-content"><div class="step-title" data-i18n="step4_t"></div><p class="step-text" data-i18n="step4_s"></p></div></div>
+  </div>
+</section>
+
+<section id="testi">
+  <div class="sec-head fu">
+    <div class="sec-label"><span data-i18n="testi_label"></span></div>
+    <h2 class="sec-title"><span data-i18n="testi_title1"></span> <em data-i18n="testi_title2"></em></h2>
+  </div>
+  <div class="testi-wrap fu">
+    <div class="testi-slides-outer" id="tOuter"><div class="testi-slides" id="tSlides"></div></div>
+    <div class="testi-nav">
+      <button class="t-btn" onclick="slideTesti(-1)"><svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg></button>
+      <button class="t-btn" onclick="slideTesti(1)"><svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ⚠️  قسم التقييم بنجمات كبيرة -->
+<section id="add-review">
+  <div class="review-form-wrap fu">
+    <h3><span data-i18n="rev_title1"></span> <em data-i18n="rev_title2"></em></h3>
+    <p class="rev-sub" data-i18n="rev_sub"></p>
+    <div class="rev-ff"><label data-i18n="rev_name"></label><input type="text" id="rev-name"/></div>
+    <div class="rev-rating-wrap">
+      <span data-i18n="rev_rate"></span>
+      <div class="star-rating" id="review-stars">
+        <svg class="star" data-val="1" onclick="setReviewRating(1)" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" data-val="2" onclick="setReviewRating(2)" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" data-val="3" onclick="setReviewRating(3)" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" data-val="4" onclick="setReviewRating(4)" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" data-val="5" onclick="setReviewRating(5)" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+    </div>
+    <div class="rev-ff"><label data-i18n="rev_msg"></label><textarea id="rev-msg" placeholder="..."></textarea></div>
+    <div class="rev-error" id="rev-error"></div>
+    <button class="btn-submit-review" onclick="submitReview()"><span data-i18n="rev_btn"></span></button>
+  </div>
+</section>
+
+<section id="cities">
+  <div class="sec-head fu"><div class="sec-label"><span data-i18n="cities_label"></span></div><h2 class="sec-title"><span data-i18n="cities_title1"></span> <em data-i18n="cities_title2"></em></h2></div>
+  <div class="cities-grid">
+    <div class="city-card fu"><img src="images/marrakech.jpg" alt="Marrakech" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=300&q=75'"/><div class="city-over"></div><div class="city-nm">Marrakech</div></div>
+    <div class="city-card fu"><img src="images/casablanca.jpg" alt="Casablanca" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=300&q=75'"/><div class="city-over"></div><div class="city-nm">Casablanca</div></div>
+    <div class="city-card fu"><img src="images/agadir.jpg" alt="Agadir" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1553525553-0bea4ea4da5a?w=300&q=75'"/><div class="city-over"></div><div class="city-nm">Agadir</div></div>
+    <div class="city-card fu"><img src="images/rabat.jpg" alt="Rabat" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1605130284535-11dd9eedc58a?w=300&q=75'"/><div class="city-over"></div><div class="city-nm">Rabat</div></div>
+    <div class="city-card fu"><img src="images/tanger.jpg" alt="Tanger" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1548019979-7af63f3a84e0?w=300&q=75'"/><div class="city-over"></div><div class="city-nm">Tanger</div></div>
+    <div class="city-card fu"><img src="images/fes.jpg" alt="Fès" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&q=75'"/><div class="city-over"></div><div class="city-nm">Fès</div></div>
+  </div>
+</section>
+
+<section id="strip">
+  <div class="strip-grid">
+    <div class="strip-item fu"><div class="strip-icon"><svg viewBox="0 0 24 24"><path d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg></div><div><div class="strip-t" data-i18n="strip1_t"></div><div class="strip-s" data-i18n="strip1_s"></div></div></div>
+    <div class="strip-item fu"><div class="strip-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg></div><div><div class="strip-t" data-i18n="strip2_t"></div><div class="strip-s" data-i18n="strip2_s"></div></div></div>
+    <div class="strip-item fu"><div class="strip-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><div><div class="strip-t" data-i18n="strip3_t"></div><div class="strip-s" data-i18n="strip3_s"></div></div></div>
+    <div class="strip-item fu"><div class="strip-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div><div><div class="strip-t" data-i18n="strip4_t"></div><div class="strip-s" data-i18n="strip4_s"></div></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <span class="f-brand">Ru Amsefeh<small> – Artisanat Médina</small></span>
+      <p class="f-desc" data-i18n="f_desc"></p>
+      <div class="f-contact">
+        <a href="https://wa.me/212725950908"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.549 4.099 1.508 5.82L.057 23.5l5.81-1.525A11.939 11.939 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>+212 725 950 908</a>
+        <a href="mailto:saidkacm13@live.fr"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>saidkacm13@live.fr</a>
+      </div>
+    </div>
+    <div class="f-col">
+      <h4 data-i18n="f_nav"></h4>
+      <ul>
+        <li><a href="#" data-i18n="nav_home"></a></li>
+        <li><a href="#cars" data-i18n="nav_cars"></a></li>
+        <li><a href="#conditions" data-i18n="nav_conditions"></a></li>
+        <li><a href="#how" data-i18n="nav_how"></a></li>
+        <li><a href="#testi" data-i18n="nav_reviews"></a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4 data-i18n="f_follow"></h4>
+      <div class="socials">
+        <a class="soc-btn" href="#"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a class="soc-btn" href="#"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a class="soc-btn" href="#"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg></a>
+      </div>
+      <div style="margin-top:28px;">
+        <button class="btn-nav-cta" onclick="openModal('')" data-i18n="nav_cta" style="width:100%;clip-path:none;"></button>
+      </div>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <p>© 2024 Ru Amsefeh – Artisanat Médina</p>
+    <p>Marrakech · 7j/7 · 24h/24</p>
+  </div>
+</footer>
+
+<script>
+const i18n = {
+  fr:{
+    nav_home:'Accueil',nav_cars:'Produits',nav_conditions:'Conditions',nav_how:'Comment ça marche',nav_reviews:'Avis',nav_cities:'Villes',nav_cta:'Commander',
+    hero_badge:'Artisanat Médina Marrakech',hero_title1:'Ru Amsefeh',hero_title2:"l'ensemble de l'artisanat Medina",hero_sub:"Découvrez l'ensemble de l'artisanat traditionnel de la Médina de Marrakech. Service 24h/24, 7j/7. Livraison disponible.",
+    feat1:'Artisanat authentique',feat2:'Qualité garantie',feat3:'Support 24/7',
+    btn_wa_book:'Commander sur WhatsApp',btn_see_cars:'Voir nos produits',
+    hero_note:'Commandez dès maintenant',
+    cars_label:'Produits',cars_title1:'Nos produits',cars_title2:'disponibles',cars_sub:'Tarifs affichés. Prix variables selon saison.',
+    season_normal:'Saison normale',season_summer:'Haute saison',
+    per_day:'/ pièce',book_btn:'Commander',
+    cond_label:'Transparence',cond_title1:'Conditions',cond_title2:'de commande',
+    cond1_title:'Profil client',cond1:['Tout client accepté','Commandes personnalisées','Livraison partout au Maroc'],
+    cond2_title:'Tarifs & paiement',cond2:['Paiement : espèces ou carte','Devis gratuit','Pas de frais cachés'],
+    cond3_title:'Livraison',cond3:['Livraison Marrakech gratuite','Livraison autres villes : supplément','Disponibilité : 7j/7, 24h/24'],
+    how_label:'Processus',how_title1:'Comment',how_title2:'ça marche ?',
+    step1_t:'Choisissez',step1_s:'Parcourez notre catalogue.',
+    step2_t:'Commandez',step2_s:'Envoyez votre demande WhatsApp.',
+    step3_t:'Fabrication',step3_s:'Nous fabriquons avec soin.',
+    step4_t:'Livraison',step4_s:'Livraison gratuite à Marrakech.',
+    testi_label:'Avis clients',testi_title1:'Ce que disent',testi_title2:'nos clients',
+    t1_name:'Karim B.',t1_loc:'Marrakech',t1_text:'Produits de qualité, fabrication artisanale authentique. Je recommande vivement !',
+    t2_name:'Youssef A.',t2_loc:'Casablanca',t2_text:'Très bonne expérience, produits conformes. Équipe réactive.',
+    t3_name:'Julie M.',t3_loc:'Paris',t3_text:"J'ai adoré l'artisanat marocain. Livraison rapide !",
+    t4_name:'Hassan L.',t4_loc:'Agadir',t4_text:'Meilleur rapport qualité/prix. Les produits sont magnifiques.',
+    rev_title1:'Laisser un',rev_title2:'avis',rev_sub:'Partagez votre expérience',
+    rev_name:'Votre nom',rev_rate:'Votre note',rev_msg:'Votre avis (optionnel)',rev_btn:'Envoyer',
+    rev_sent:'✓ Avis envoyé !',rev_error_name:'Entrez votre nom',rev_error_rate:'Sélectionnez une note',
+    cities_label:'Couverture',cities_title1:'Nous livrons dans',cities_title2:'tout le Maroc',
+    strip1_t:'Commandes 24/7',strip1_s:'À tout moment',strip2_t:'Livraison gratuite',strip2_s:'À Marrakech',
+    strip3_t:'Paiement flexible',strip3_s:'Espèces ou carte',strip4_t:'Qualité garantie',strip4_s:'Artisanat authentique',
+    f_desc:'Artisanat traditionnel de la Médina de Marrakech. Produits authentiques, service 24h/24.',
+    f_nav:'Navigation',f_follow:'Suivez-nous',
+    m_title:'Commander',m_sub:'Remplissez le formulaire. Nous confirmons sous 30 min.',
+    l_name:'Votre nom',l_phone:'Téléphone',l_from:'Lieu de livraison',l_start:'Date souhaitée',l_end:'Date livraison',l_msg:'Message (optionnel)',
+    l_car:'Choisir un produit',car_choose:'— Sélectionnez —',m_btn:'Envoyer sur WhatsApp',
+    wa_msg:(name,car,from,start,end,msg)=>`Bonjour Ru Amsefeh 👋\n\n*Nouvelle commande*\n👤 Nom : ${name}\n🛍️ Produit : ${car}\n📍 Livraison : ${from}\n📅 Date souhaitée : ${start}\n📅 Livraison : ${end}${msg?'\n📝 Message : '+msg:''}\n\nMerci !`,
+    toast_msg:'✓ Redirection vers WhatsApp...',
+    val_name:'Entrez votre nom',val_phone:'Numéro de téléphone valide',val_car:'Sélectionnez un produit',
+    val_dates:'Sélectionnez les deux dates',val_min3:'Minimum 3 jours',val_end_before_start:'Date livraison après date commande'
+  },
+  en:{
+    nav_home:'Home',nav_cars:'Products',nav_conditions:'Terms',nav_how:'How it works',nav_reviews:'Reviews',nav_cities:'Cities',nav_cta:'Order',
+    hero_badge:'Artisanat Médina Marrakech',hero_title1:'Ru Amsefeh',hero_title2:"l'ensemble de l'artisanat Medina",hero_sub:'Discover the traditional craftsmanship of Marrakech Medina. Available 24/7. Delivery available.',
+    feat1:'Authentic craft',feat2:'Quality guaranteed',feat3:'24/7 support',
+    btn_wa_book:'Order on WhatsApp',btn_see_cars:'See our products',
+    hero_note:'Order now',
+    cars_label:'Products',cars_title1:'Our',cars_title2:'products',cars_sub:'Prices shown. Rates vary by season.',
+    season_normal:'Normal season',season_summer:'Peak season',
+    per_day:'/ piece',book_btn:'Order',
+    cond_label:'Transparency',cond_title1:'Order',cond_title2:'terms',
+    cond1_title:'Customer',cond1:['All customers accepted','Custom orders available','Delivery throughout Morocco'],
+    cond2_title:'Pricing',cond2:['Payment: cash or card','Free quote','No hidden fees'],
+    cond3_title:'Delivery',cond3:['Free delivery in Marrakech','Other cities: additional fee','Available: 7 days, 24h/24'],
+    how_label:'Process',how_title1:'How does',how_title2:'it work?',
+    step1_t:'Choose',step1_s:'Browse our catalog.',
+    step2_t:'Order',step2_s:'Send your request via WhatsApp.',
+    step3_t:'Production',step3_s:'We craft your order with care.',
+    step4_t:'Delivery',step4_s:'Free delivery in Marrakech.',
+    testi_label:'Reviews',testi_title1:'What our',testi_title2:'clients say',
+    t1_name:'Karim B.',t1_loc:'Marrakech',t1_text:'Quality products, authentic craftsmanship. Highly recommended!',
+    t2_name:'Youssef A.',t2_loc:'Casablanca',t2_text:'Great experience, products match photos. Responsive team.',
+    t3_name:'Julie M.',t3_loc:'Paris',t3_text:'I loved the Moroccan craftsmanship. Fast delivery!',
+    t4_name:'Hassan L.',t4_loc:'Agadir',t4_text:'Best value for money. Beautiful products.',
+    rev_title1:'Leave a',rev_title2:'review',rev_sub:'Share your experience',
+    rev_name:'Your name',rev_rate:'Your rating',rev_msg:'Your review (optional)',rev_btn:'Submit',
+    rev_sent:'✓ Review sent!',rev_error_name:'Enter your name',rev_error_rate:'Select a rating',
+    cities_label:'Coverage',cities_title1:'We deliver',cities_title2:'throughout Morocco',
+    strip1_t:'Orders 24/7',strip1_s:'Anytime',strip2_t:'Free delivery',strip2_s:'In Marrakech',
+    strip3_t:'Flexible payment',strip3_s:'Cash or card',strip4_t:'Quality guaranteed',strip4_s:'Authentic craft',
+    f_desc:'Traditional craftsmanship of Marrakech Medina. Authentic products, available 24/7.',
+    f_nav:'Navigation',f_follow:'Follow us',
+    m_title:'Order Now',m_sub:'Fill the form. We confirm within 30 min.',
+    l_name:'Your name',l_phone:'Phone',l_from:'Delivery location',l_start:'Desired date',l_end:'Delivery date',l_msg:'Message (optional)',
+    l_car:'Choose a product',car_choose:'— Select —',m_btn:'Send on WhatsApp',
+    wa_msg:(name,car,from,start,end,msg)=>`Hello Ru Amsefeh 👋\n\n*New Order*\n👤 Name: ${name}\n🛍️ Product: ${car}\n📍 Delivery: ${from}\n📅 Desired: ${start}\n📅 Delivery: ${end}${msg?'\n📝 Note: '+msg:''}\n\nThank you!`,
+    toast_msg:'✓ Redirecting to WhatsApp...',
+    val_name:'Enter your name',val_phone:'Valid phone number',val_car:'Select a product',
+    val_dates:'Select both dates',val_min3:'Minimum 3 days',val_end_before_start:'Delivery date after order date'
+  },
+  ar:{
+    nav_home:'الرئيسية',nav_cars:'المنتجات',nav_conditions:'الشروط',nav_how:'كيف يعمل',nav_reviews:'التقييمات',nav_cities:'المدن',nav_cta:'اطلب',
+    hero_badge:'الصناعة التقليدية المدينة مراكش',hero_title1:'Ru Amsefeh',hero_title2:"l'ensemble de l'artisanat Medina",hero_sub:'اكتشف مجموعة الصناعة التقليدية في مدينة مراكش. متاحون 24/7. التوصيل متوفر.',
+    feat1:'صناعة تقليدية أصيلة',feat2:'جودة مضمونة',feat3:'دعم 24/7',
+    btn_wa_book:'اطلب على واتساب',btn_see_cars:'شوف المنتجات',
+    hero_note:'اطلب الآن',
+    cars_label:'المنتجات',cars_title1:'منتجاتنا',cars_title2:'المتاحة',cars_sub:'الأسعار المعروضة. تختلف حسب الموسم.',
+    season_normal:'الموسم العادي',season_summer:'الموسم المرتفع',
+    per_day:'/ قطعة',book_btn:'اطلب',
+    cond_label:'الشفافية',cond_title1:'شروط',cond_title2:'الطلب',
+    cond1_title:'العميل',cond1:['جميع العملاء مقبولون','طلبات مخصصة متاحة','التوصيل لجميع أنحاء المغرب'],
+    cond2_title:'الأسعار',cond2:['الدفع: كاش أو بطاقة','تسعيرة مجانية','لا رسوم خفية'],
+    cond3_title:'التوصيل',cond3:['توصيل مجاني بمراكش','توصيل لمدن أخرى: برسوم','متاحون: 7 أيام، 24/24'],
+    how_label:'العملية',how_title1:'كيف',how_title2:'تسير الأمور؟',
+    step1_t:'اختر',step1_s:'تصفح كتالوجنا.',
+    step2_t:'اطلب',step2_s:'أرسل طلبك عبر واتساب.',
+    step3_t:'التصنيع',step3_s:'نصنع طلبك بعناية.',
+    step4_t:'التوصيل',step4_s:'توصيل مجاني بمراكش.',
+    testi_label:'التقييمات',testi_title1:'ماذا يقول',testi_title2:'عملاؤنا',
+    t1_name:'كريم ب.',t1_loc:'مراكش',t1_text:'منتجات عالية الجودة، صناعة تقليدية أصيلة. أوصي بشدة!',
+    t2_name:'يوسف أ.',t2_loc:'الدار البيضاء',t2_text:'تجربة رائعة، المنتجات مطابقة للصور. فريق سريع الاستجابة.',
+    t3_name:'جولي م.',t3_loc:'باريس',t3_text:'أحببت الصناعة التقليدية المغربية. توصيل سريع!',
+    t4_name:'حسن ل.',t4_loc:'أكادير',t4_text:'أفضل قيمة مقابل السعر. المنتجات رائعة.',
+    rev_title1:'اترك',rev_title2:'تقييماً',rev_sub:'شارك تجربتك',
+    rev_name:'اسمك',rev_rate:'تقييمك',rev_msg:'تعليقك (اختياري)',rev_btn:'إرسال',
+    rev_sent:'✓ تم إرسال تقييمك!',rev_error_name:'أدخل اسمك',rev_error_rate:'اختر تقييماً',
+    cities_label:'التغطية',cities_title1:'نوصل لجميع',cities_title2:'أنحاء المغرب',
+    strip1_t:'طلبات 24/7',strip1_s:'في أي وقت',strip2_t:'توصيل مجاني',strip2_s:'في مراكش',
+    strip3_t:'دفع مرن',strip3_s:'كاش أو بطاقة',strip4_t:'جودة مضمونة',strip4_s:'صناعة تقليدية',
+    f_desc:'الصناعة التقليدية لمدينة مراكش. منتجات أصيلة، متاحون 24/24.',
+    f_nav:'التنقل',f_follow:'تابعنا',
+    m_title:'اطلب الآن',m_sub:'أملأ النموذج. نؤكد في أقل من 30 دقيقة.',
+    l_name:'اسمك',l_phone:'الهاتف',l_from:'مكان التوصيل',l_start:'التاريخ المطلوب',l_end:'تاريخ التوصيل',l_msg:'ملاحظة (اختياري)',
+    l_car:'اختر منتجاً',car_choose:'— اختر —',m_btn:'إرسال على واتساب',
+    wa_msg:(name,car,from,start,end,msg)=>`مرحباً Ru Amsefeh 👋\n\n*طلب جديد*\n👤 الاسم: ${name}\n🛍️ المنتج: ${car}\n📍 التوصيل: ${from}\n📅 التاريخ المطلوب: ${start}\n📅 التوصيل: ${end}${msg?'\n📝 ملاحظة: '+msg:''}\n\nشكراً!`,
+    toast_msg:'✓ جاري التوجيه إلى واتساب...',
+    val_name:'أدخل اسمك',val_phone:'رقم هاتف صحيح',val_car:'اختر منتجاً',
+    val_dates:'اختر كلا التاريخين',val_min3:'الحد الأدنى 3 أيام',val_end_before_start:'تاريخ التوصيل بعد تاريخ الطلب'
+  }
+};
+
+const cars = [
+  {name:'Poterie Traditionnelle',price:150,summer:200,img:'images/poterie.jpg',gear:'Fait main',seats:0,badge:'Populaire',year:''},
+  {name:'Tapis Berbère',price:2500,summer:3000,img:'images/tapis.jpg',gear:'Laine pure',seats:0,badge:'Luxe',year:''},
+  {name:'Babouches en Cuir',price:200,summer:250,img:'images/babouches.jpg',gear:'Cuir véritable',seats:0,badge:'',year:''},
+  {name:'Lanternes Marocaines',price:350,summer:400,img:'images/lanternes.jpg',gear:'Métal forgé',seats:0,badge:'2025',year:'2025'},
+  {name:'Plateau en Cuivre',price:800,summer:950,img:'images/plateau.jpg',gear:'Cuivre martelé',seats:0,badge:'',year:''},
+  {name:'Bijoux Berbères',price:300,summer:350,img:'images/bijoux.jpg',gear:'Argent massif',seats:0,badge:'',year:''},
+  {name:'Céramique Peinte',price:180,summer:220,img:'images/ceramique.jpg',gear:'Peinture main',seats:0,badge:'Nouveau',year:'2025'},
+  {name:'Théière Marocaine',price:250,summer:300,img:'images/theiere.jpg',gear:'Acier inoxydable',seats:0,badge:'',year:''},
+  {name:'Djellaba Traditionnelle',price:500,summer:600,img:'images/djellaba.jpg',gear:'Coton premium',seats:0,badge:'',year:''},
+  {name:'Parfum Ambre',price:120,summer:150,img:'images/parfum.jpg',gear:'Huiles essentielles',seats:0,badge:'',year:''},
+  {name:'Miroir Sculpté',price:450,summer:500,img:'images/miroir.jpg',gear:'Bois sculpté',seats:0,badge:'Premium',year:''},
+  {name:'Couscous Traditionnel',price:80,summer:100,img:'images/couscous.jpg',gear:'Semoule fine',seats:0,badge:'Best seller',year:''},
+];
+
+let currentLang = 'fr';
+let currentSeason = 'normal';
+let currentCar = '';
+let tIdx = 0;
+let tCardW = 0;
+let reviewRating = 0;
+
+function detectLang(){
+  const saved = localStorage.getItem('ruamsefeh_lang');
+  if(saved && (saved==='fr'||saved==='en'||saved==='ar')) return saved;
+  const bl = navigator.language || navigator.userLanguage || 'fr';
+  const lc = bl.toLowerCase().split('-')[0];
+  if(lc==='ar') return 'ar';
+  if(lc==='fr') return 'fr';
+  return 'en';
+}
+
+function setLang(lang){
+  currentLang = lang;
+  localStorage.setItem('ruamsefeh_lang', lang);
+  const t = i18n[lang];
+  document.title = "Ru Amsefeh l'ensemble de l'artisanat Medina";
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(t[key] !== undefined) el.textContent = t[key];
+  });
+  const isAr = lang==='ar';
+  document.documentElement.setAttribute('dir', isAr?'rtl':'ltr');
+  document.documentElement.setAttribute('lang', lang);
+  document.body.style.fontFamily = isAr ? 'var(--ff-ar)' : 'var(--ff-body)';
+  document.querySelectorAll('.lang-flag-btn').forEach(b=>b.classList.remove('active'));
+  const ab = document.getElementById('lang-'+lang);
+  if(ab) ab.classList.add('active');
+  buildCars();
+  buildConditions();
+  buildTestimonials();
+  updateModalLabels();
+  buildCarSelect();
+  resetReviewRating();
+  tIdx = 0;
+  setTimeout(initSlider, 150);
+}
+
+function setReviewRating(val){
+  reviewRating = val;
+  document.querySelectorAll('#review-stars .star').forEach((s,i)=>s.classList.toggle('active',i<val));
+}
+function resetReviewRating(){
+  reviewRating = 0;
+  document.querySelectorAll('#review-stars .star').forEach(s=>s.classList.remove('active'));
+}
+
+function submitReview(){
+  const t = i18n[currentLang];
+  const name = document.getElementById('rev-name').value.trim();
+  const msg = document.getElementById('rev-msg').value.trim();
+  const errEl = document.getElementById('rev-error');
+  errEl.classList.remove('show');
+  if(!name){ errEl.textContent = t.rev_error_name; errEl.classList.add('show'); return; }
+  if(!reviewRating){ errEl.textContent = t.rev_error_rate; errEl.classList.add('show'); return; }
+  const stars = '⭐'.repeat(reviewRating);
+  const text = `مرحباً Ru Amsefeh 👋\n\n*تقييم جديد*\n👤 الاسم: ${name}\n${stars} التقييم: ${reviewRating}/5${msg?'\n📝 تعليق: '+msg:''}\n\nشكراً!`;
+  window.open('https://wa.me/212725950908?text='+encodeURIComponent(text),'_blank');
+  document.getElementById('rev-name').value = '';
+  document.getElementById('rev-msg').value = '';
+  resetReviewRating();
+  showToast(t.rev_sent, 'success');
+}
+
+function buildCars(){
+  const t = i18n[currentLang];
+  const grid = document.getElementById('cars-grid');
+  if(!grid) return;
+  grid.innerHTML = '';
+  cars.forEach((car,i)=>{
+    const price = currentSeason==='summer' ? car.summer : car.price;
+    const card = document.createElement('div');
+    card.className = 'car-card';
+    card.innerHTML = `
+      ${car.badge?`<span class="car-badge">${car.badge}</span>`:''}
+      <div class="car-img-wrap"><img src="${car.img}" alt="${car.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=color:var(--gold)>${car.name}</span>'"/></div>
+      <div class="car-name">${car.name}</div>
+      <div class="car-specs-row">${car.gear?`<div class="car-spec"><svg viewBox="0 0 24 24" width="12" height="12" fill="var(--gold)"><circle cx="12" cy="12" r="10"/></svg>${car.gear}</div>`:''}${car.year?`<div class="car-spec"><svg viewBox="0 0 24 24"><path d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>${car.year}</div>`:''}</div>
+      <div class="car-price-wrap"><div class="car-price">${price} DH</div><div class="car-price-unit">${t.per_day}</div></div>
+      ${currentSeason==='normal'?`<div class="car-price-summer">${currentLang==='ar'?`الصيف: ${car.summer} درهم`:`Été : ${car.summer} DH`}</div>`:''}
+      <button class="btn-book-car" onclick="openModal('${car.name}')">${t.book_btn}</button>
+    `;
+    grid.appendChild(card);
+    setTimeout(()=>card.classList.add('vis'),50+(i*20));
+  });
+}
+
+function buildTestimonials(){
+  const t = i18n[currentLang];
+  const slides = document.getElementById('tSlides');
+  if(!slides) return;
+  slides.innerHTML = '';
+  for(let i=1;i<=4;i++){
+    const card = document.createElement('div');
+    card.className = 'testi-card';
+    card.innerHTML = `
+      <div class="testi-stars">${'<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>'.repeat(5)}</div>
+      <p class="testi-text">${t['t'+i+'_text']}</p>
+      <div class="testi-name">${t['t'+i+'_name']}</div>
+      <div class="testi-loc">${t['t'+i+'_loc']}</div>
+    `;
+    slides.appendChild(card);
+  }
+  initSlider();
+}
+
+function buildCarSelect(){
+  const t = i18n[currentLang];
+  const select = document.getElementById('f-car');
+  if(!select) return;
+  select.innerHTML = `<option value="">${t.car_choose}</option>`;
+  cars.forEach(car=>{
+    const opt = document.createElement('option');opt.value=car.name;opt.textContent=car.name;
+    select.appendChild(opt);
+  });
+  if(currentCar && select.querySelector(`option[value="${currentCar}"]`)) select.value = currentCar;
+}
+
+function buildConditions(){
+  const t = i18n[currentLang];
+  ['cond1','cond2','cond3'].forEach(k=>{
+    const list = document.getElementById(k+'-list');
+    if(list){ list.innerHTML=''; t[k].forEach(item=>{const li=document.createElement('li');li.textContent=item;list.appendChild(li);});}
+  });
+}
+
+function setSeason(s){
+  currentSeason=s;
+  document.getElementById('btn-normal').classList.toggle('active',s==='normal');
+  document.getElementById('btn-summer').classList.toggle('active',s==='summer');
+  buildCars();
+}
+
+function updateModalLabels(){
+  const t = i18n[currentLang];
+  document.getElementById('m-title').textContent = t.m_title;
+  document.getElementById('m-sub').textContent = t.m_sub;
+  document.getElementById('l-car').textContent = t.l_car;
+  document.getElementById('l-name').textContent = t.l_name;
+  document.getElementById('l-phone').textContent = t.l_phone;
+  document.getElementById('l-from').textContent = t.l_from;
+  document.getElementById('l-start').textContent = t.l_start;
+  document.getElementById('l-end').textContent = t.l_end;
+  document.getElementById('l-msg').textContent = t.l_msg;
+  document.getElementById('m-btn-txt').textContent = t.m_btn;
+}
+
+function openModal(carName){
+  currentCar = carName;
+  updateModalLabels();
+  buildCarSelect();
+  document.getElementById('m-car').textContent = carName || (currentLang==='ar'?'منتج':'Produit');
+  clearErrors();
+  document.getElementById('f-name').value='';
+  document.getElementById('f-phone').value='';
+  document.getElementById('f-start').value='';
+  document.getElementById('f-end').value='';
+  document.getElementById('f-msg').value='';
+  if(carName) document.getElementById('f-car').value = carName;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+  clearErrors();
+}
+
+function clearErrors(){
+  document.querySelectorAll('.ff input, .ff select').forEach(el=>el.classList.remove('error'));
+  document.querySelectorAll('.error-msg').forEach(el=>{el.classList.remove('show');el.textContent='';});
+}
+
+function showFieldError(fieldId, errId, msg){
+  const field = document.getElementById(fieldId);
+  const errEl = document.getElementById(errId);
+  if(field) field.classList.add('error');
+  if(errEl){ errEl.textContent = msg; errEl.classList.add('show'); }
+}
+
+function validateAndSend(){
+  clearErrors();
+  const t = i18n[currentLang];
+  let hasError = false;
+  const car = document.getElementById('f-car').value;
+  const name = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const from = document.getElementById('f-from').value;
+  const start = document.getElementById('f-start').value;
+  const end = document.getElementById('f-end').value;
+  const msg = document.getElementById('f-msg').value.trim();
+  if(!car){showFieldError('f-car','err-car',t.val_car);hasError=true;}
+  if(!name){showFieldError('f-name','err-name',t.val_name);hasError=true;}
+  if(!phone || phone.replace(/[\s\+\-\(\)]/g,'').length<8){showFieldError('f-phone','err-phone',t.val_phone);hasError=true;}
+  if(!start || !end){showFieldError('f-start','err-start',t.val_dates);showFieldError('f-end','err-end','');hasError=true;}
+  if(start && end){
+    const dS = new Date(start), dE = new Date(end);
+    if(dE <= dS){showFieldError('f-end','err-end',t.val_end_before_start);hasError=true;}
+    if(Math.ceil((dE-dS)/(1000*60*60*24))<3){showFieldError('f-end','err-end',t.val_min3);hasError=true;}
+  }
+  if(hasError){
+    const fe = document.querySelector('.ff input.error, .ff select.error');
+    if(fe) fe.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  const text = t.wa_msg(name,car,from,start,end,msg);
+  window.open('https://wa.me/212725950908?text='+encodeURIComponent(text),'_blank');
+  closeModal();
+  showToast(t.toast_msg,'success');
+}
+
+function openWA(){
+  const t = i18n[currentLang];
+  const g = currentLang==='ar'?'مرحباً Ru Amsefeh 🛍️':(currentLang==='en'?'Hello Ru Amsefeh 🛍️':'Bonjour Ru Amsefeh 🛍️');
+  window.open('https://wa.me/212725950908?text='+encodeURIComponent(g),'_blank');
+}
+
+function showToast(msg, type){
+  const tt=document.getElementById('toast');
+  tt.textContent=msg;tt.className='toast '+(type==='error'?'error':'');
+  tt.classList.add('show');setTimeout(()=>tt.classList.remove('show'),3500);
+}
+
+function toggleMenu(){document.getElementById('mobMenu').classList.toggle('open');}
+
+window.addEventListener('scroll',()=>{
+  const nav = document.getElementById('mainNav');
+  if(nav) nav.classList.toggle('scrolled', window.scrollY > 80);
+  const p = (window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  document.getElementById('progressBar').style.width = p + '%';
+});
+
+function initSlider(){
+  const outer = document.getElementById('tOuter'), slides = document.getElementById('tSlides');
+  if(!outer||!slides||slides.children.length===0) return;
+  const w = outer.offsetWidth, pv = w>960?3:w>600?2:1, gap=20;
+  tCardW = (w-(gap*(pv-1)))/pv;
+  Array.from(slides.children).forEach(c=>{c.style.flex='0 0 '+tCardW+'px';c.style.minWidth=tCardW+'px';c.style.maxWidth=tCardW+'px';});
+  slideTesti(0);
+}
+
+function slideTesti(dir){
+  const slides = document.getElementById('tSlides');
+  if(!slides||slides.children.length===0) return;
+  const w = document.getElementById('tOuter').offsetWidth, pv = w>960?3:w>600?2:1;
+  tIdx = Math.max(0,Math.min(tIdx+dir,Math.max(0,slides.children.length-pv)));
+  slides.style.transform = `translateX(-${tIdx*(tCardW+20)}px)`;
+}
+
+const obs = new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis');});},{threshold:.08});
+function observeAll(){document.querySelectorAll('.fu').forEach(el=>obs.observe(el));}
+
+(function(){
+  const lang=detectLang();currentLang=lang;
+  document.documentElement.setAttribute('dir',lang==='ar'?'rtl':'ltr');
+  document.documentElement.setAttribute('lang',lang);
+  document.body.style.fontFamily=lang==='ar'?'var(--ff-ar)':'var(--ff-body)';
+  document.addEventListener('DOMContentLoaded',()=>{setLang(lang);observeAll();});
+})();
+
+window.addEventListener('resize',()=>{tIdx=0;setTimeout(initSlider,150);});
+</script>
+</body>
+</html>
